@@ -39,10 +39,11 @@ class HomePage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      RowItem(),
-                      RowItem(),
-                      RowItem(),
-                      RowItem(),
+                      RowItem('ac', 'ce', '%', '/'),
+                      RowItem('7', '8', '9', '*'),
+                      RowItem('4', '5', '6', '-'),
+                      RowItem('1', '2', '3', '+'),
+                      RowItem('00', '0', '.', '='),
                     ],
                   )),
             ),
@@ -55,17 +56,43 @@ class HomePage extends StatelessWidget {
 
 // *row item
 class RowItem extends StatelessWidget {
-  const RowItem({Key? key}) : super(key: key);
+  final String? text1;
+  final String? text2;
+  final String? text3;
+  final String? text4;
+  RowItem(
+    this.text1,
+    this.text2,
+    this.text3,
+    this.text4,
+  );
+
+  bool isOperator(String text) {
+    var opeatorList = ['ac', 'ce', '%', '/', '=', '+', '-', '*'];
+    for (var item in opeatorList) {
+      if (text == item) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Padding(
-          padding: EdgeInsets.all(3),
+        TextButton(
+          style: isOperator(text1!)
+              ? TextButton.styleFrom(
+                  primary: textGreen,
+                  backgroundColor: backgroundGreyDark,
+                  shape: CircleBorder(),
+                )
+              : null,
+          onPressed: () {},
           child: Text(
-            '1',
+            text1!,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 26,
@@ -73,10 +100,17 @@ class RowItem extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(3),
+        TextButton(
+          style: isOperator(text2!)
+              ? TextButton.styleFrom(
+                  primary: textGreen,
+                  backgroundColor: backgroundGreyDark,
+                  shape: CircleBorder(),
+                )
+              : null,
+          onPressed: () {},
           child: Text(
-            '1',
+            text2!,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 26,
@@ -84,10 +118,17 @@ class RowItem extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(3),
+        TextButton(
+          style: isOperator(text3!)
+              ? TextButton.styleFrom(
+                  primary: textGreen,
+                  backgroundColor: backgroundGreyDark,
+                  shape: CircleBorder(),
+                )
+              : null,
+          onPressed: () {},
           child: Text(
-            '1',
+            text3!,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 26,
@@ -95,10 +136,17 @@ class RowItem extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(3),
+        TextButton(
+          style: isOperator(text4!)
+              ? TextButton.styleFrom(
+                  primary: textGreen,
+                  backgroundColor: backgroundGreyDark,
+                  shape: CircleBorder(),
+                )
+              : null,
+          onPressed: () {},
           child: Text(
-            '1',
+            text4!,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 26,
